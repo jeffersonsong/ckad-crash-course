@@ -16,7 +16,7 @@ In this exercise, you will create a parallel-executed Job that is in charge of w
 > If you do not already have a cluster, you can create one by using minikube or you can use the O'Reilly interactive labs ["Creating a Nonparallel Job"](https://learning.oreilly.com/scenarios/creating-a-nonparallel/9781098163877/), and ["Creating a Parallel Job"](https://learning.oreilly.com/scenarios/creating-a-parallel/9781098163884/).
 
 1. Create a Job named `random-hash` that executes the shell command `echo $RANDOM | base64 | head -c 20`. Configure the Job to execute with two Pods in parallel. The number of completions should be set to five.
-```
+```shell
 kubectl create job random-hash --image=busybox --dry-run=client -o yaml > random-hash-job.yaml
 ```
 
@@ -37,23 +37,23 @@ spec:
       restartPolicy: Never
 ```
 
-```
+```shell
 k create -f random-hash-job.yaml
 ```
 
 2. Identify the Pods that executed the shell command. How many Pods do expect to exist?
-```
+```shell
 k get po
 ```
 
 3. Retrieve the generated hash from one of the Pods.
-```
+```shell
 k logs pod/random-hash-974sq
 MTkxNzIK
 ```
 
 4. Delete the Job. Will the corresponding Pods continue to exist?
-```
+```shell
 k delete job random-hash
 k get po
 ```
