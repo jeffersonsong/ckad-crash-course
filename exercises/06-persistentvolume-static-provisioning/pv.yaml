@@ -6,6 +6,7 @@ spec:
   capacity:
     storage: 512Mi
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   hostPath:
     path: /tmp/data/config
+    type: DirectoryOrCreate
