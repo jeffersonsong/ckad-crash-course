@@ -72,24 +72,6 @@ cp web-app-pod.yaml web-app-pod-teplate.yaml
 ```
 kubectl expose pod hello-world --port=80 --target-port=3000 --name=web-app-service --type=ClusterIP --dry-run=client -o yaml > web-app-service.yaml
 ```
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    name: hello-world
-  name: web-app-service
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 3000
-  selector:
-    name: hello-world
-  type: ClusterIP
-```
-```
 k apply -f web-app-service.yaml
 cp web-app-service.yaml web-app-service-template.yaml
 ```
