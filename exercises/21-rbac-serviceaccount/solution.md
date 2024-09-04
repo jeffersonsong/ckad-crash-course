@@ -102,3 +102,17 @@ k create rolebinding -h | less
 k create rolebinding api-call-list-services-rolebinding --clusterrole=list-services-clusterrole --serviceaccount=t23:api-call                        
 rolebinding.rbac.authorization.k8s.io/api-call-list-services-rolebinding created
 ```
+
+Cleanup
+```
+k delete pod service-list -n t23 --force
+
+k delete rolebinding api-call-list-services-rolebinding
+
+k delete clusterrole list-services-clusterrole
+
+
+k delete ns t23
+```
+
+
