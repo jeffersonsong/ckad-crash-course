@@ -88,3 +88,7 @@ spec:
   - name: output-volume
     emptyDir: {}
 ```
+
+```
+k delete pod date-recorder --force
+```
