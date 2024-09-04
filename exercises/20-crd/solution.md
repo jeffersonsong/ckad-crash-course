@@ -121,3 +121,12 @@ Spec:
   Pod Name:         nginx
 Events:             <none>
 ```
+
+Clean up
+```
+k delete backup nginx-backup
+backup.example.com "nginx-backup" deleted
+
+k delete crd backups.example.com
+customresourcedefinition.apiextensions.k8s.io "backups.example.com" deleted
+```
