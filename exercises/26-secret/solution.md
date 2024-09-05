@@ -73,3 +73,10 @@ DB_PASSWORD=passwd
 
 4. (Optional) Discuss: What is one of the benefit of using a Secret over a ConfigMap?
 Less risk exposes the sensitive data during creating, viewing pods.
+
+Cleanup
+```
+k delete pod backend
+
+k delete secret db-credentials
+```
