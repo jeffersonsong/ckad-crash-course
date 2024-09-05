@@ -2,3 +2,4 @@
 *.tar
 exercises/02-pod/pod-error.txt
 *.tgz
+.vscode/settings.json
