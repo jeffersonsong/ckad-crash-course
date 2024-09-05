@@ -104,3 +104,12 @@ Containers:
     Requests:
       cpu:        350m
 ```
+
+
+Cleanup
+```
+k delete pod pod-with-less-cpu-resource-requirements -n d92
+k delete pod pod-without-resource-requirements -n d92
+k delete limitrange cpu-limit-range -n d92
+k delete ns d92
+```
