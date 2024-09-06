@@ -47,7 +47,7 @@ spec:
     emptyDir: {}
 ```
 
-```shell
+```
 k apply -f adapter.yaml
 
 k get po
@@ -58,7 +58,7 @@ adapter-pod   2/2     Running   0          4m32s
 2. Before creating the Pod, define an `emptyDir` volume. Mount the volume in both containers with the path `/var/logs`.
 3. Create the Pod, log into the container `transformer`. The current directory should continuously write a new file every 20 seconds.
 
-```shell
+```
 k exec -it adapter-pod -c transformer -- /bin/sh
 / # ls
 2024-09-02-01-46-40-transformed.txt  2024-09-02-01-48-01-transformed.txt  2024-09-02-01-49-02-transformed.txt  home                                 root                                 var

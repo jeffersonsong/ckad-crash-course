@@ -25,7 +25,7 @@ k apply -f pods.yaml
 - `backend`: `env=prod`, `team=legacy`, `app=v1.2.4`
 - `database`: `env=prod`, `team=storage`
 
-```shell
+```
 k label -h
 
 k label pod frontend env=prod team=shiny
@@ -43,7 +43,7 @@ pod/database labeled
 - `frontend`: `contact=John Doe`, `commit=2d3mg3`
 - `backend`: `contact=Mary Harris`
 
-```shell
+```
 k annotate pod -h
 
 k annotate pod frontend contact='John Doe' commit=2d3mg3
@@ -52,7 +52,7 @@ k annotate pod backend contact='Mary Harris'
 
 4. Render the list of all Pods and their labels.
 
-```shell
+```
 k get pod --show-labels
 NAME       READY   STATUS    RESTARTS   AGE     LABELS
 backend    1/1     Running   0          2m57s   app=v1.2.4,env=prod,team=legacy
@@ -62,7 +62,7 @@ frontend   1/1     Running   0          2m57s   env=prod,team=shiny
 
 5. Use label selectors on the command line to query for all production Pods that belong to the teams `shiny` and `legacy`.
 
-```shell
+```
 k get pods -l 'team in (shiny, legacy)',env=prod --show-labels
 NAME       READY   STATUS    RESTARTS   AGE     LABELS
 frontend   1/1     Running   0          9m59s   env=prod,team=shiny
@@ -71,7 +71,7 @@ backend   1/1     Running   0          10m   app=v1.2.4,env=prod,team=legacy
 
 6. Remove the label `env` from the `backend` Pod and rerun the selection.
 
-```shell
+```
 k label pod -h
 
 kubectl label pod backend env-
@@ -80,7 +80,7 @@ pod/backend unlabeled
 
 7. Render the surrounding 3 lines of YAML of all Pods that have annotations.
 
-```shell
+```
 k get pod -o yaml | grep -C 3 "annotations:"
 - apiVersion: v1
   kind: Pod

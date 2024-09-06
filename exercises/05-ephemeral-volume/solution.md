@@ -16,7 +16,7 @@ In this exercise, you will create a Pod that runs the web server [nginx](https:/
 > If you do not already have a cluster, you can create one by using minikube or you can use the O'Reilly interactive lab ["Creating a Pod with Volume of Type emptydir"](https://learning.oreilly.com/scenarios/creating-a-pod/9781098163907/).
 
 1. Create a Pod named `nginx` in the namespace `h92`. Its container should run the container image `nginx:1.21.6`.
-```shell
+```
 k create ns h92
 k run nginx --image=nginx:1.21.6 -n h92 --dry-run=client -o yaml > nginx.yaml
 ```
@@ -49,7 +49,7 @@ spec:
     emptyDir: {}
 ```
 
-```shell
+```
 k create -f nginx.yaml
 ```
 

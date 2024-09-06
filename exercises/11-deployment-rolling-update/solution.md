@@ -38,13 +38,13 @@ spec:
       - image: nginx:1.23.0
         name: nginx
 ```
-```shell
+```
 k apply -f deployment.yaml
 ```
 
 2. List the Deployment and ensure that the correct number of replicas is running.
 
-```shell
+```
 k get deploy
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE
 nginx   3/3     3            3           19s
@@ -52,14 +52,14 @@ nginx   3/3     3            3           19s
 
 3. Update the image to `nginx:1.23.4`.
 
-```shell
+```
 k set image deployment/nginx nginx=nginx:1.23.4
 deployment.apps/nginx image updated
 ```
 
 4. Verify that the change has been rolled out to all replicas.
 
-```shell
+```
 k get deploy -o wide
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS   IMAGES         SELECTOR
 nginx   3/3     1            3           115s   nginx        nginx:1.23.4   app=v1
@@ -67,7 +67,7 @@ nginx   3/3     1            3           115s   nginx        nginx:1.23.4   app=
 
 5. Assign the change cause "Pick up patch version" to the revision.
 
-```shell
+```
 k rollout history deployment/nginx
 deployment.apps/nginx 
 REVISION  CHANGE-CAUSE
@@ -78,7 +78,7 @@ REVISION  CHANGE-CAUSE
 k annotate deployment/nginx kubernetes.io/change-cause="Pick up patch version"
 deployment.apps/nginx annotated
 
-```shell
+```
 k rollout history deployment/nginx                                            
 deployment.apps/nginx 
 REVISION  CHANGE-CAUSE
@@ -88,13 +88,13 @@ REVISION  CHANGE-CAUSE
 
 6. Scale the Deployment to 5 replicas.
 
-```shell
+```
 k scale deployment/nginx --replicas=5
 ```
 
 7. Have a look at the Deployment rollout history.
 
-```shell
+```
 k rollout history deploy/nginx   
 deployment.apps/nginx 
 REVISION  CHANGE-CAUSE
@@ -104,7 +104,7 @@ REVISION  CHANGE-CAUSE
 
 8. Revert the Deployment to revision 1.
 
-```shell
+```
 k rollout -h
 kubectl rollout undo -h 
 kubectl rollout undo deployment/nginx --to-revision=1
@@ -119,7 +119,7 @@ REVISION  CHANGE-CAUSE
 
 9. Ensure that the Pods use the image `nginx:1.23.0`.
 
-```shell
+```
 k get deploy -o wide
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES         SELECTOR
 nginx   5/5     5            5           14m   nginx        nginx:1.23.0   app=v1

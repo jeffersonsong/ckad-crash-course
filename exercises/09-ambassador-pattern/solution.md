@@ -43,7 +43,7 @@ spec:
   restartPolicy: Never
 ```
 
-```shell
+```
 k apply -f rate-limiter.yaml 
 pod/rate-limiter created
 
@@ -54,7 +54,7 @@ rate-limiter   2/2     Running   0          88s
 
 3. Test the rate-limiting functionality. First, create the Pod, shell into the `business-app` container that runs the business application, and execute a series of `curl` commands that target `localhost:8081/test`, the end point of the `ambassador` container. The first five calls will be allowed to the external service. On the sixth call, you’ll receive an error message, as the rate limit has been reached within the given time frame.
 
-```shell
+```
 k exec -it rate-limiter -n ext-access -c business-app -- /bin/sh
 
 # curl http://localhost:8081/test
@@ -76,7 +76,7 @@ k exec -it rate-limiter -n ext-access -c business-app -- /bin/sh
 }
 ```
 
-```shell
+```
 # curl http://localhost:8081/test
 # curl http://localhost:8081/test
 # curl http://localhost:8081/test
