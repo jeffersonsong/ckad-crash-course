@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-k1-pods
+  namespace: k2
+spec:
+  podSelector: 
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: k1
+    ports:
+    - port: 80
+      protocol: TCP
+  policyTypes:
+  - Ingress
