@@ -56,6 +56,8 @@ wget: can't connect to remote host (10.0.0.70): Connection timed out
 
 4. Create a network policy that allows performing ingress calls for all Pods in namespace `k1` to the Pod `nginx` in namespace `k2`. Pods in all other namespaces should be denied to make ingress calls to Pods in namespace `k2`.
 
+[Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
