@@ -89,3 +89,8 @@ minikube ssh
 docker@minikube:~$ ls /data/config
 test.txt
 ```
+
+Cleanup
+```
+k delete pod app
+```
