@@ -16,6 +16,7 @@ In this exercise, you will create a PersistentVolume, connect it to a Persistent
 > If you do not already have a cluster, you can create one by using minikube or you can use the O'Reilly interactive lab ["Creating and Using a PersistentVolume with Static Provisioning"](https://learning.oreilly.com/scenarios/creating-and-using/9781098163914/).
 
 1. Create a PersistentVolume named `pv`, access mode `ReadWriteMany`, 512Mi of storage capacity and the host path `/data/config`.
+
 [Configure a Pod to Use a PersistentVolume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/)
 ```yaml
 apiVersion: v1
