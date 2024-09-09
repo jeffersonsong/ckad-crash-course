@@ -76,29 +76,9 @@ k logs service-list -n t23
 5. Assign a ClusterRole and RoleBinding to the service account that only allows the operation needed by the Pod. Have a look at the response from the `curl` command.
 ```
 kubectl create clusterrole service-list-clusterrole --verb=list --resource=services
-clusterrole.rbac.authorization.k8s.io/service-list-clusterrole created
 
 kubectl create rolebinding api-call-rolebinding --clusterrole=service-list-clusterrole --serviceaccount=t23:api-call
-```
 
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  creationTimestamp: null
-  name: api-call-rolebinding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: service-list-clusterrole
-subjects:
-- kind: ServiceAccount
-  name: api-call
-  namespace: t23
-```
-
-```
-k apply -f rolebinding.yaml
 k logs service-list -n t23
 ```
 
