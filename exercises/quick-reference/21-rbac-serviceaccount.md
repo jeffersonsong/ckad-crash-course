@@ -1,14 +1,23 @@
 Create a Pod named `service-list` in the namespace `t23`. The container uses the image `alpine/curl:3.14` and makes a `curl` call to the Kubernetes API that lists Service objects in the `default` namespace in an infinite loop.
 
 Search Kubernetes API lists Service
-[Kubernetes API Concepts](https://kubernetes.io/docs/reference/using-api/api-concepts/)
-[DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-[Accessing the Kubernetes API from a Pod](https://kubernetes.io/docs/tasks/run-application/access-api-from-pod/)
-[Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
-kubernetes.default.svc.cluster.local/api/v1/namespaces/default/services
-kubernetes.default.svc/api/v1/namespaces/default/services
+- [Kubernetes API Concepts](https://kubernetes.io/docs/reference/using-api/api-concepts/)
+- [DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+- [Accessing the Kubernetes API from a Pod](https://kubernetes.io/docs/tasks/run-application/access-api-from-pod/)
+- [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+```
+# DNS
+kubernetes.default.svc.cluster.local
+kubernetes.default.svc
 
+# Endpoint
+GET /api/v1/namespaces/default/services
+
+# Token
 TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+
+curl -s -k -H "Authorization: Bearer $TOKEN" https://kubernetes.default.svc.cluster.local/api/v1/namespaces/default/services
+```
 
 ```
 k run service-list -n t23 --image=alpine/curl:3.14 --dry-run=client -o yaml > pod.yaml
