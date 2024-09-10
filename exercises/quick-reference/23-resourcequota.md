@@ -1,0 +1,11 @@
+```yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: app
+spec:
+  hard:
+    pods: "2"
+    requests.cpu: "2"
+    requests.memory: 500Mi
+```

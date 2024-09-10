@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test
+  namespace: rq-demo
+spec:
+  containers:
+  - image: nginx
+    name: test
+    resources: 
+      limits:
+        cpu: 0.5
+        memory: 500Mi
