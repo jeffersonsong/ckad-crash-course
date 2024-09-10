@@ -67,3 +67,8 @@ wget -O- http://192.168.49.2:31726
 Yes
 8. (Optional) Discuss: Under what condition would you use the service type `LoadBalancer`?
 With cloud provider
+
+```
+k delete svc myapp
+k delete deploy myapp
+```
