@@ -30,19 +30,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    run: app
-  name: app
 spec:
-  containers:
-  - image: nginx:1.21.6
-    name: app
-    volumeMounts:
-    - mountPath: /var/app/config
-      name: pv-volume
   volumes:
   - name: pv-volume
     persistentVolumeClaim:
