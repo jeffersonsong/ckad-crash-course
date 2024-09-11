@@ -37,7 +37,7 @@ k run temp --image=alpine/curl -it --rm --restart=Never -- curl http://web.defau
 ```
 5. Create an Ingress that exposes the path `/` for the host `hello-world.exposed`. The traffic should be routed to the Service created earlier.
 ```
-kubectl create ingress hello-world-ingress --rule="hello-world.exposed/=web:80"
+kubectl create ingress hello-world-ingress --rule="hello-world.exposed/*=web:80"
 ```
 6. List the Ingress object.
 ```

@@ -24,4 +24,4 @@ spec:
   volumes:
   - name: data-volume
     emptyDir: {}
-
+```

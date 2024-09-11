@@ -62,7 +62,7 @@ mypod   1/1     Running   0          6m42s   10.0.0.98   minikube   <none>      
 ```
 8. Run a temporary Pod in the namespace `ckad-prep` using the image `busybox`, shell into it and run a `wget` command against the `nginx` Pod using port 80.
 ```
-k run temp -it --image=busybox --rm --restart=Never -- wget http://10.0.0.98
+k run temp -it --image=busybox --rm --restart=Never -- wget -O- http://10.0.0.98
 Connecting to 10.0.0.98 (10.0.0.98:80)
 saving to 'index.html'
 index.html           100% |********************************|   612  0:00:00 ETA
